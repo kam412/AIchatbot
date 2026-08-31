@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #14161c;
+  --panel: #1d212b;
+  --panel-raised: #262b37;
+  --paper: #ece7dc;
+  --paper-dim: #b7b2a4;
+  --amber: #c9a15d;
+  --amber-dim: #8a7047;
+  --line: #333947;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Inter', system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 720px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 28px 24px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.app-header h1 {
+  font-family: 'Source Serif 4', serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--paper-dim);
+}
+
+.transcript {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  display: flex;
+  max-width: 82%;
+}
+
+.message.user {
+  align-self: flex-end;
+}
+
+.message.assistant {
+  align-self: flex-start;
+}
+
+.bubble {
+  padding: 12px 16px;
+  border-radius: 3px;
+  line-height: 1.5;
+  font-size: 0.97rem;
+  white-space: pre-wrap;
+}
+
+.message.assistant .bubble {
+  background: var(--panel);
+  border-left: 2px solid var(--amber-dim);
+}
+
+.message.user .bubble {
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.message.pending .bubble {
+  color: var(--paper-dim);
+  font-style: italic;
+}
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 16px 24px 24px;
+  border-top: 1px solid var(--line);
+}
+
+#input {
+  flex: 1;
+  resize: none;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--paper);
+  font-family: inherit;
+  font-size: 0.97rem;
+  padding: 12px 14px;
+  max-height: 140px;
+}
+
+#input:focus {
+  outline: 2px solid var(--amber-dim);
+  outline-offset: 1px;
+}
+
+#send-btn {
+  background: var(--amber);
+  border: none;
+  border-radius: 3px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#send-btn:disabled {
+  background: var(--panel-raised);
+  color: var(--paper-dim);
+  cursor: default;
+}
+
+#send-btn:focus-visible,
+.composer textarea:focus-visible {
+  outline: 2px solid var(--amber);
+}
+
+@media (max-width: 480px) {
+  .message {
+    max-width: 92%;
+  }
+}
